@@ -11,7 +11,7 @@
     ];
 
   # Source
-  nix.settings.substituters = lib.mkForce [ "https://mirror.nju.edu.cn/nix-channels/store" ];
+  nix.settings.substituters = lib.mkForce [ "https://mirror.nju.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,7 +29,27 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "zh_CN.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "zh_CN.UTF-8";
+    LC_IDENTIFICATION = "zh_CN.UTF-8";
+    LC_MEASUREMENT = "zh_CN.UTF-8";
+    LC_MONETARY = "zh_CN.UTF-8";
+    LC_NAME = "zh_CN.UTF-8";
+    LC_NUMERIC = "zh_CN.UTF-8";
+    LC_PAPER = "zh_CN.UTF-8";
+    LC_TELEPHONE = "zh_CN.UTF-8";
+    LC_TIME = "zh_CN.UTF-8";
+  };
+  # Input Method
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    waylandFrontend= true;
+    fcitx5.addons = with pkgs; [
+      kdePackages.fcitx5-qt
+      fcitx5-chinese-addons
+  }
+
   console = {
     font = "Lat2-Terminus16";
     # keyMap = "us";
@@ -44,7 +64,7 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
-  
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -70,23 +90,30 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
-      tree
-      bash-completion
-      openssh
-      wget
-      parted
-      curl
-      vim
-      nano
+      fcitx5-chinese-addons
+      vscode
     ];
   };
-
+  
+  # Allow unfree softwares.
+  nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    nano
+    git
     wget
+    tree
+    bash-completion
+    curl
+    cpufrequtils
+    fastfetch
+    s-tui
+    tlp
+    unzip
+    ntfs3g
+    wqy_microhei
+    wqy_zenhei
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -106,8 +133,8 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
+  # networking.firewall.enable = false;
+  hardware.bluetooth.enable=true;
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
