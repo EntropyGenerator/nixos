@@ -12,6 +12,9 @@
 
   # Source
   nix.settings.substituters = lib.mkForce [ "https://mirror.nju.edu.cn/nix-channels/store" "https://mirrors.ustc.edu.cn/nix-channels/store" ];
+  # Unfree software
+  nixpkgs.config.allowUnfree = true;  
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -93,11 +96,13 @@
       firefox
       fcitx5-chinese-addons
       vscode
+      seafile-client
+      qq
+      v2raya
+      xray
     ];
   };
   
-  # Allow unfree softwares.
-  nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
