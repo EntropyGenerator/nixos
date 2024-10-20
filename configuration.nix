@@ -44,11 +44,12 @@
   # Input Method
   i18n.inputMethod = {
     enabled = "fcitx5";
-    waylandFrontend= true;
+    fcitx5.waylandFrontend = true;
+    fcitx5.plasma6Support = true;
     fcitx5.addons = with pkgs; [
-      kdePackages.fcitx5-qt
       fcitx5-chinese-addons
-  }
+    ];
+  };
 
   console = {
     font = "Lat2-Terminus16";
@@ -101,6 +102,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    htop
     git
     wget
     tree
