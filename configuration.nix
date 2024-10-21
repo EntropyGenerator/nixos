@@ -109,7 +109,6 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     htop
     git
-    wget
     tree
     bash-completion
     curl
@@ -121,6 +120,8 @@
     ntfs3g
     wqy_microhei
     wqy_zenhei
+    toybox # Linux Utils
+    pciutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
