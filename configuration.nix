@@ -53,7 +53,9 @@
       fcitx5-chinese-addons
     ];
   };
-
+  fonts.fonts = with pkgs; [
+    corefonts
+  ];
   console = {
     font = "Lat2-Terminus16";
     # keyMap = "us";
@@ -94,12 +96,13 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
-      fcitx5-chinese-addons
-      vscode
+      (vscode.override { commandLineArgs = "--enable-wayland-ime"; })
       seafile-client
       qq
       v2raya
       xray
+      onlyoffice-bin
+      go-musicfox
     ];
   };
   
@@ -122,6 +125,12 @@
     wqy_zenhei
     toybox # Linux Utils
     pciutils
+    go
+    gcc
+    gdb
+    gnumake
+    cmake
+    conda
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
