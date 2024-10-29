@@ -100,6 +100,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
+      chromium
       (vscode.override { commandLineArgs = "--enable-wayland-ime"; })
       seafile-client
       qq
@@ -121,6 +122,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     htop
+    btop
     git
     tree
     bash-completion
@@ -141,6 +143,7 @@
     gnumake
     cmake
     conda
+    direnv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
