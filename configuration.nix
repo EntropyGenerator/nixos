@@ -105,9 +105,10 @@
       seafile-client
       qq
       v2raya
-      xray
+      v2ray
       onlyoffice-bin
       go-musicfox
+      mpv
     ];
   };
 
@@ -137,6 +138,8 @@
     fastfetch
     s-tui
     unzip
+    zip
+    unar
     ntfs3g
     wqy_microhei
     wqy_zenhei
