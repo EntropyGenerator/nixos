@@ -18,7 +18,15 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # AMD CPU
+  boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
+  boot.kernelModules = [ "zenpower" ];
 
+  # SSD
+  services.fstrim.enable = lib.mkDefault true;
+  
+  # Network
   networking.hostName = "nix16"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,7 +63,6 @@
   };
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
     noto-fonts-cjk-sans
     noto-fonts-emoji
     corefonts
@@ -75,6 +82,29 @@
   services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.wayland.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # NVIDIA fxxk U
+  services.xserver.videoDrivers = lib.mkDefault ["amdgpu" "nvidia"];
+  boot.blacklistedKernelModules = ["nouveau"];
+  hardware = {
+    opengl.enable = true;
+    ## Enable the Nvidia card, as well as Prime and Offload:
+    amdgpu.initrd.enable = lib.mkDefault true;
+    nvidia = {
+      open = true;
+      modesetting.enable = true;
+      nvidiaSettings = lib.mkDefault true;
+
+      prime = {
+        offload = {
+          enable = lib.mkForce true;
+          enableOffloadCmd = lib.mkDefault true;
+        };
+        amdgpuBusId = "PCI:65:0:0";
+        nvidiaBusId = "PCI:64:0:0";
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -104,13 +134,15 @@
       (vscode.override { commandLineArgs = "--enable-wayland-ime"; })
       seafile-client
       qq
-      v2raya
       v2ray
+      v2raya
       onlyoffice-bin
       go-musicfox
-      mpv
+      vlc
     ];
   };
+
+  services.v2raya.enable = true;
 
   # Steam
   programs.steam = {
@@ -122,6 +154,15 @@
   
   # nix-ld
   programs.nix-ld.enable = true;
+
+  # ASUS
+  services.supergfxd.enable = true;
+  services = {
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+  };
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -133,6 +174,7 @@
     tree
     bash-completion
     curl
+    wget
     cpufrequtils
     powertop
     fastfetch
@@ -152,6 +194,7 @@
     cmake
     conda
     direnv
+    nvtop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -225,7 +268,6 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
-
