@@ -20,8 +20,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # AMD CPU
-  boot.extraModulePackages = [ config.boot.kernelPackages.zenpower ];
-  boot.kernelModules = [ "zenpower" ];
+  boot = {
+    blacklistedKernelModules = [ "k10temp" "nouveau"];
+    extraModulePackages = [
+      config.boot.kernelPackages.zenpower 
+      config.boot.kernelPackages.acpi_call
+    ];
+    kernelModules = [ "zenpower" ];
+    kernelParams = [
+      "pcie_aspm.policy=powersupersave"
+    ];
+  };
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # SSD
   services.fstrim.enable = lib.mkDefault true;
@@ -85,7 +95,7 @@
 
   # NVIDIA fxxk U
   services.xserver.videoDrivers = lib.mkDefault ["amdgpu" "nvidia"];
-  boot.blacklistedKernelModules = ["nouveau"];
+  #boot.blacklistedKernelModules = ["nouveau"];
   hardware = {
     opengl.enable = true;
     ## Enable the Nvidia card, as well as Prime and Offload:
@@ -271,3 +281,4 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
+
