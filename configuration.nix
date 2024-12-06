@@ -97,10 +97,11 @@
   services.xserver.videoDrivers = lib.mkDefault ["amdgpu" "nvidia"];
   #boot.blacklistedKernelModules = ["nouveau"];
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     ## Enable the Nvidia card, as well as Prime and Offload:
     amdgpu.initrd.enable = lib.mkDefault true;
     nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       open = true;
       modesetting.enable = true;
       nvidiaSettings = lib.mkDefault true;
