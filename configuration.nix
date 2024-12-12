@@ -21,16 +21,18 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # AMD CPU
   boot = {
-    blacklistedKernelModules = [ "k10temp" "nouveau"];
-    extraModulePackages = [
-      config.boot.kernelPackages.zenpower 
-      config.boot.kernelPackages.acpi_call
-    ];
-    kernelModules = [ "zenpower" ];
+    blacklistedKernelModules = [ "nouveau"];
+    #extraModulePackages = [
+      #config.boot.kernelPackages.zenpower 
+      #config.boot.kernelPackages.acpi_call
+    #];
+    #kernelModules = [ "zenpower" ];
     kernelParams = [
       "pcie_aspm.policy=powersupersave"
     ];
   };
+  powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # SSD
@@ -174,6 +176,7 @@
       enableUserService = true;
     };
   };
+  #services.cpupower-gui.enable = true;
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -187,7 +190,6 @@
     curl
     wget
     cpufrequtils
-    powertop
     fastfetch
     s-tui
     unzip
@@ -206,6 +208,8 @@
     conda
     direnv
     nvtop
+    supergfxctl-plasmoid
+    fwupd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
