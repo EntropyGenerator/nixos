@@ -21,13 +21,16 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # AMD CPU
   boot = {
-    blacklistedKernelModules = [ "nouveau"];
+    blacklistedKernelModules = [ "nouveau" ];
     #extraModulePackages = [
       #config.boot.kernelPackages.zenpower 
       #config.boot.kernelPackages.acpi_call
     #];
-    #kernelModules = [ "zenpower" ];
+    #kernelModules = [ "amd-pstate" ];
     kernelParams = [
+      #"mem_sleep_default=deep"
+      "amd_iommu=on"
+      "iommu=pt"
       "pcie_aspm.policy=powersupersave"
     ];
   };
@@ -66,10 +69,12 @@
   };
   # Input Method
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5.waylandFrontend = true;
     fcitx5.plasma6Support = true;
     fcitx5.addons = with pkgs; [
+      kdePackages.fcitx5-qt
       fcitx5-chinese-addons
     ];
   };
@@ -105,7 +110,7 @@
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       open = true;
-      modesetting.enable = true;
+      #modesetting.enable = true;
       nvidiaSettings = lib.mkDefault true;
 
       prime = {
@@ -169,6 +174,7 @@
   programs.nix-ld.enable = true;
 
   # ASUS
+  boot.initrd.prepend = [(toString ./acpi_override)];
   services.supergfxd.enable = true;
   services = {
     asusd = {
@@ -207,7 +213,7 @@
     cmake
     conda
     direnv
-    nvtop
+    nvtopPackages.full
     supergfxctl-plasmoid
     fwupd
   ];
