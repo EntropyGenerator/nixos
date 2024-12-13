@@ -19,6 +19,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # ASUS
+  #boot.initrd.prepend = [ "${./acpi_override}" ];
+  services.supergfxd.enable = true;
+  services = {
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+  };
+
   # AMD CPU
   boot = {
     blacklistedKernelModules = [ "nouveau" ];
@@ -29,8 +40,8 @@
     #kernelModules = [ "amd-pstate" ];
     kernelParams = [
       #"mem_sleep_default=deep"
-      "amd_iommu=on"
-      "iommu=pt"
+      #"acpi_osi=\"!Windows2012\""
+      "amd_iommu=off"
       "pcie_aspm.policy=powersupersave"
     ];
   };
@@ -173,15 +184,6 @@
   # nix-ld
   programs.nix-ld.enable = true;
 
-  # ASUS
-  boot.initrd.prepend = [(toString ./acpi_override)];
-  services.supergfxd.enable = true;
-  services = {
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
-  };
   #services.cpupower-gui.enable = true;
   
   # List packages installed in system profile. To search, run:
