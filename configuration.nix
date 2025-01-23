@@ -18,10 +18,11 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # ASUS
-  #boot.initrd.prepend = [ "${./acpi_override}" ];
   services.supergfxd.enable = true;
   services = {
     asusd = {
@@ -37,11 +38,8 @@
       #config.boot.kernelPackages.zenpower 
       #config.boot.kernelPackages.acpi_call
     #];
-    #kernelModules = [ "amd-pstate" ];
+    kernelModules = [ "amd-pstate" ];
     kernelParams = [
-      #"mem_sleep_default=deep"
-      #"acpi_osi=\"!Windows2012\""
-      "amd_iommu=off"
       "pcie_aspm.policy=powersupersave"
     ];
   };
@@ -93,6 +91,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    noto-fonts-extra
     corefonts
   ];
   console = {
@@ -115,13 +114,16 @@
   services.xserver.videoDrivers = lib.mkDefault ["amdgpu" "nvidia"];
   #boot.blacklistedKernelModules = ["nouveau"];
   hardware = {
-    graphics.enable = true;
+    graphics = {
+      enable = lib.mkDefault true;
+      enable32Bit = lib.mkDefault true;
+    };
     ## Enable the Nvidia card, as well as Prime and Offload:
     amdgpu.initrd.enable = lib.mkDefault true;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       open = true;
-      #modesetting.enable = true;
+      modesetting.enable = true;
       nvidiaSettings = lib.mkDefault true;
 
       prime = {
@@ -132,6 +134,13 @@
         amdgpuBusId = "PCI:65:0:0";
         nvidiaBusId = "PCI:64:0:0";
       };
+
+      powerManagement = {
+        enable = lib.mkDefault true;
+        finegrained = lib.mkDefault true;
+      };
+
+      dynamicBoost.enable = lib.mkDefault true;
     };
   };
 
@@ -160,7 +169,7 @@
     packages = with pkgs; [
       firefox
       chromium
-      (vscode.override { commandLineArgs = "--enable-wayland-ime"; })
+      (vscode.override { commandLineArgs = "--enable-wayland-ime %F"; })
       seafile-client
       qq
       v2ray
@@ -168,6 +177,7 @@
       onlyoffice-bin
       go-musicfox
       vlc
+      wechat-uos
     ];
   };
 
@@ -218,6 +228,7 @@
     nvtopPackages.full
     supergfxctl-plasmoid
     fwupd
+    powertop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -240,7 +251,8 @@
   # networking.firewall.enable = false;
 
   # bluetooth
-  hardware.bluetooth.enable=true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   # TLP
   # services.power-profiles-daemon.enable = false;
