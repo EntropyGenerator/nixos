@@ -1,12 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
-
 {
   imports = [
-    (import "${home-manager}/nixos")
+
   ];
 
   users.users.int16 = {
@@ -25,16 +21,6 @@ in
       vlc
       wechat-uos
     ];
-  };
-
-  home-manager.users.int16 = { pkgs, ... }: {
-    home.packages = with pkgs; [
-    ];
-    programs.bash.enable = true;
-
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "24.11";
   };
 
   programs.steam = {

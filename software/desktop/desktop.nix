@@ -17,6 +17,7 @@
   };
   environment.systemPackages = with pkgs; [
     # Hyprland
+    networkmanagerapplet
     kitty
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
