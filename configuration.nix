@@ -11,7 +11,7 @@
     ./hardware/default/main.nix
     ./software/desktop/desktop.nix
     ./software/system/system.nix
-    ./user/int16.nix
+    ./user/user.nix
   ];
 
   # Source
