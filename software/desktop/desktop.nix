@@ -18,16 +18,18 @@
     # Hyprland
     networkmanagerapplet
     kitty
+    xfce.thunar
+
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
-    pyprland
+    xorg.xlsclients
     xwayland
+
     hyprpicker
     hyprcursor
     hyprlock
     hypridle
     hyprpaper
-    waypaper
     hyprshot
     waybar
     wofi

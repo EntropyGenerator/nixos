@@ -31,6 +31,7 @@
     noto-fonts-emoji
     noto-fonts-color-emoji
     noto-fonts-extra
+    font-awesome
     corefonts
     # nerdfonts
   ];
