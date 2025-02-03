@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # ./home-manager.nix
   ];
 
   # nix-ld 
@@ -15,7 +14,7 @@
     vim
     htop
     btop
-    git 
+    git
     tree
     bash-completion
     curl
@@ -30,10 +29,13 @@
     wqy_microhei
     wqy_zenhei
     toybox # Linux Utils
-    pciutils 
+    pciutils
     nvtopPackages.full
     powertop
-    radeontop 
     direnv
+    brightnessctl
   ];
+
+  # Keyring
+  services.gnome.gnome-keyring.enable = true;
 }

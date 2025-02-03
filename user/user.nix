@@ -22,6 +22,7 @@
       wechat-uos
     ];
   };
+  security.pam.services.int16.enableGnomeKeyring = true;
 
   programs.steam = {
     enable = true;

@@ -18,13 +18,16 @@
     # Hyprland
     networkmanagerapplet
     kitty
-    xfce.thunar
 
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
+    kdePackages.qtsvg
+    kdePackages.dolphin
+    kdePackages.gwenview
+    kdePackages.kate
+    
     xorg.xlsclients
     xwayland
-    brightnessctl
 
     hyprpicker
     hyprcursor
@@ -35,7 +38,7 @@
     waybar
     wofi
     wlogout
-    dunst    
+    dunst
     hyprshade
   ];
 
