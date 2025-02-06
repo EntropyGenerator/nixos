@@ -20,6 +20,8 @@
       go-musicfox
       vlc
       wechat-uos
+
+      bibata-cursors
     ];
   };
   security.pam.services.int16.enableGnomeKeyring = true;
