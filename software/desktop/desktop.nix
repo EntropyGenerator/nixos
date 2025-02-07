@@ -25,6 +25,7 @@
     kdePackages.dolphin
     kdePackages.gwenview
     kdePackages.kate
+    kdePackages.ark
     
     xorg.xlsclients
     xwayland
