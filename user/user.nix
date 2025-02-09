@@ -9,7 +9,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
+      firefox-esr
       chromium
       (vscode.override { commandLineArgs = "--enable-wayland-ime %F"; })
       seafile-client
