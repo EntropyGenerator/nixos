@@ -7,7 +7,7 @@
 
   users.users.int16 = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [
       firefox-esr
       chromium
@@ -21,10 +21,13 @@
       vlc
       wechat-uos
       (pkgs.callPackage ../software/3rd/easierconnect/easierconnect.nix { })
+      yazi
 
       bibata-cursors
     ];
   };
+
+  # Security
   security.pam.services.int16.enableGnomeKeyring = true;
 
   programs.steam = {

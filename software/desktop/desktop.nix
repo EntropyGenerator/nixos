@@ -1,15 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./greetd.nix
+  ];
+
   # Wayland Desktop Environment Configuations.
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
+    # displayManager.gdm.enable = true;
   };
+
   # Hyprland
-  programs.hyprland = { # or wayland.windowManager.hyprland
+  programs.hyprland = {
     enable = true;
     xwayland.enable = true;
     withUWSM = true;
@@ -26,6 +31,7 @@
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.ark
+    kdePackages.plasma-systemmonitor
     
     xorg.xlsclients
     xwayland
