@@ -1,14 +1,21 @@
 { config, lib, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz;
+in
+
 {
   imports = [
-
+    (import "${home-manager}/nixos")
   ];
 
   users.users.int16 = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
-    packages = with pkgs; [
+  };
+
+  home-manager.users.int16 = { pkgs, ... }: {
+    home.packages = with pkgs; [
       firefox-esr
       chromium
       (vscode.override { commandLineArgs = "--enable-wayland-ime %F"; })
@@ -21,11 +28,29 @@
       vlc
       wechat-uos
       (pkgs.callPackage ../software/3rd/easierconnect/easierconnect.nix { })
-      yazi
 
       bibata-cursors
+
+      yazi
+      atool
     ];
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/plain" = "org.kde.kwrite.desktop";
+      };
+    };
+    programs.bash.enable = true;
+    programs.zsh.enable = true;
+   
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "24.11";
+    programs.home-manager.enable = true;
   };
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "bak";
 
   # Security
   security.pam.services.int16.enableGnomeKeyring = true;

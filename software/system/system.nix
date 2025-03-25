@@ -33,6 +33,8 @@
     nvtopPackages.full
     powertop
     brightnessctl
+
+    # python312Packages.conda
   ];
 
   # Keyring
@@ -51,6 +53,9 @@
     };
   };
 
+  # polkit
+  security.polkit.enable = true;
+
   # docker
   virtualisation.docker.enable = true;
   hardware.nvidia-container-toolkit.enable = true;
@@ -60,4 +65,5 @@
     enable = true;
     package = pkgs.mariadb;
   };
+
 }
