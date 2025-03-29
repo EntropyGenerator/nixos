@@ -1,16 +1,51 @@
 {
   description = "Nix16 flake";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+  nixConfig = {
+    extra-substituters = [
+      "https://mirror.nju.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.nix16 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-      ];
-    };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { 
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    home-manager,
+    ...
+  }@inputs: {
+    nixosConfigurations = {
+      nix16 = let
+        # USERNAME
+        username = "int16";
+        specialArgs = {inherit username;};
+      in nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/fa401wv
+        ];
+        home-manager.nixosModules.home-manager = {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "bak";
+
+          home-manager.extraSpecialArgs = inputs // specialArgs;
+          home-manager.users.${username} = import ./user/home.nix;
+        };
+      };
+    }
   };
 }
