@@ -46,6 +46,6 @@
           home-manager.users.${username} = import ./user/home.nix;
         };
       };
-    }
+    };
   };
 }
