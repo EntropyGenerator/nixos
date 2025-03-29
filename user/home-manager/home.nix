@@ -15,7 +15,7 @@
     go-musicfox
     vlc
     wechat-uos
-    (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
+    (pkgs.callPackage ../../modules/software/3rd/easierconnect/easierconnect.nix { })
 
     bibata-cursors
 
