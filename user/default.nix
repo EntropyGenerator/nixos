@@ -13,6 +13,4 @@
   security.pam.services.${username}.enableGnomeKeyring = true;
 
   services.v2raya.enable = true;
-
-  home-manager.backupFileExtension = "bak";
 }
