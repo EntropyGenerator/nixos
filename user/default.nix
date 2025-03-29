@@ -16,17 +16,4 @@
   # 666
   services.v2raya.enable = true;
 
-  # Shell
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ll = "ls -la";
-      update = "sudo nixos-rebuild switch";
-    };
-    history.size = 1000;
-  };
 }
