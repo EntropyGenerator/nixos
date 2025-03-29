@@ -7,6 +7,8 @@
 
     ../../modules/software/system
     ../../modules/software/desktop
+
+    ../../user
   ];
 
 }

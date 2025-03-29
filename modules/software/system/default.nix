@@ -37,6 +37,13 @@
     # python312Packages.conda
   ];
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    #dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Keyring
   services.gnome.gnome-keyring.enable = true;
 
@@ -75,5 +82,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   system.stateVersion = "24.11";
+
+
 
 }
