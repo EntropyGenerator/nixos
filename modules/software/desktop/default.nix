@@ -18,6 +18,8 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  # Desktop Apps
   environment.systemPackages = with pkgs; [
     # Hyprland
     networkmanagerapplet
@@ -26,11 +28,13 @@
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
     kdePackages.qtsvg
-    kdePackages.dolphin
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.ark
     kdePackages.plasma-systemmonitor
+
+    nautilus
+    code-nautilus
     
     xorg.xlsclients
     xwayland
@@ -47,6 +51,9 @@
     dunst
     hyprshade
   ];
+
+  # Nautilus fix
+  services.gvfs.enable = true;
 
   # Multi GPU
   environment.variables = {
