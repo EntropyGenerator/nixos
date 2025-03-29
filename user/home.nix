@@ -22,6 +22,7 @@
     yazi
     atool
   ];
+ 
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
