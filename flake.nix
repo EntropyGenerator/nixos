@@ -19,13 +19,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { 
+  outputs = inputs @ { 
     self,
     nixpkgs,
     nixpkgs-stable,
     home-manager,
     ...
-  }@inputs: {
+  }: {
     nixosConfigurations = {
       nix16 = let
         # USERNAME
