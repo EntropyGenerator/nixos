@@ -8,7 +8,7 @@
     ../../modules/software/system
     ../../modules/software/desktop
 
-    ../../user/home-manager
+    ../../user
   ];
 
 }
