@@ -21,24 +21,29 @@
 
   # Desktop Apps
   environment.systemPackages = with pkgs; [
-    # Hyprland
-    networkmanagerapplet
-    kitty
 
+    # Environment
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
     kdePackages.qtsvg
+    xorg.xlsclients
+    xwayland
+    adwaita-icon-theme
+    gnomeExtensions.appindicator
+
+    # Utils
+    networkmanagerapplet
+    kitty
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.ark
     kdePackages.plasma-systemmonitor
 
+    # File Manager
     nautilus
     code-nautilus
     
-    xorg.xlsclients
-    xwayland
-
+    # Hyprland
     hyprpicker
     hyprcursor
     hyprlock
@@ -52,11 +57,23 @@
     hyprshade
   ];
 
+  # Gnome fix
+  programs.dconf.enable = true;
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
   # Nautilus fix
   services.gvfs.enable = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (nprev: {
+        buildInputs =
+          nprev.buildInputs
+          ++ (with pkgs.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+      });
+    })
+  ];
 
-  # Multi GPU
-  environment.variables = {
-    AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
-  };
 }

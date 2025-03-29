@@ -33,6 +33,8 @@
       dynamicBoost.enable = true;
     };
   };
+
+  # MultiGPU
   environment.variables = {
     KWIN_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";

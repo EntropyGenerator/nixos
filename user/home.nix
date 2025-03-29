@@ -22,11 +22,13 @@
     yazi
     atool
   ];
- 
+
+  # Default Applications
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       "text/plain" = "org.kde.kwrite.desktop";
+      "image/x-mng" = "org.kde.gwenview.desktop";
     };
   };
 

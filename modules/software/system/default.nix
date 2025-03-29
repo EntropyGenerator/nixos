@@ -16,10 +16,10 @@
     btop
     git
     tree
-    bash-completion
+    zsh-completion
     curl
     wget
-    linuxKernel.packages.linux_6_12.cpupower
+    linuxKernel.packages.linux_6_13.cpupower
     fastfetch
     s-tui
     unzip
