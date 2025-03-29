@@ -16,7 +16,6 @@
     btop
     git
     tree
-    zsh-completion
     curl
     wget
     linuxKernel.packages.linux_6_13.cpupower

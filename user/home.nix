@@ -33,7 +33,18 @@
   };
 
   # programs.bash.enable = true;
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -la";
+      update = "sudo nixos-rebuild switch";
+    };
+    history.size = 1000;
+  };
  
   # The state version is required and should stay at the version you
   # originally installed.
