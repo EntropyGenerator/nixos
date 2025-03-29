@@ -12,7 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_6_12;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_6_13;
 
   # NTFS
   boot.supportedFilesystems = [ "ntfs" ];

@@ -1,7 +1,6 @@
 { pkgs, lib, username, ... }:
 
 {
-  inherit username;
   home.homeDirectory = "/home/${username}";
 
   home.packages = with pkgs; [
@@ -16,7 +15,7 @@
     go-musicfox
     vlc
     wechat-uos
-    (pkgs.callPackage ../software/3rd/easierconnect/easierconnect.nix { })
+    (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
 
     bibata-cursors
 

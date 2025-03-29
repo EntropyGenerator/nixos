@@ -13,8 +13,4 @@
   security.pam.services.${username}.enableGnomeKeyring = true;
 
   services.v2raya.enable = true;
-
-  # Waydroid
-  virtualisation.waydroid.enable = true;
-
 }
