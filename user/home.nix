@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, lib, username, ... }:
 
 {
   inherit username;
