@@ -25,6 +25,17 @@
 
   # Shell
   programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -la";
+      update = "sudo nixos-rebuild switch";
+    };
+    history.size = 1000;
+
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "thefuck" ];

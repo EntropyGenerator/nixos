@@ -18,18 +18,6 @@
 
   # Shell
   users.defaultUserShell = pkgs.zsh;
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ll = "ls -la";
-      update = "sudo nixos-rebuild switch";
-    };
-    histSize = 1000;
-  };
   environment.pathsToLink = [ "/share/zsh" ];
   environment.shells = with pkgs; [ zsh ];
 }
