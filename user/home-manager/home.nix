@@ -1,6 +1,9 @@
 { pkgs, lib, username, ... }:
 
 {
+  imports = [
+    ./hyprland
+  ];
   home.homeDirectory = "/home/${username}";
 
   home.packages = with pkgs; [
