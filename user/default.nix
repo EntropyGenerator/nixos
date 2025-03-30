@@ -16,7 +16,6 @@
   # 666
   services.v2raya.enable = true;
 
-
   # Shell
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
@@ -29,5 +28,8 @@
       ll = "ls -la";
       update = "sudo nixos-rebuild switch";
     };
+    histSize = 1000;
   };
+  environment.pathsToLink = [ "/share/zsh" ];
+  environment.shells = with pkgs; [ zsh ];
 }

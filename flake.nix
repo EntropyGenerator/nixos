@@ -40,7 +40,7 @@
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "home-manager.bak";
+            home-manager.backupFileExtension = "home-manager.backup";
 
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./user/home-manager/home.nix;

@@ -23,6 +23,15 @@
     atool
   ];
 
+  # Shell
+  programs.zsh = {
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "agnoster";
+    };
+  };
+
   # Default Applications
   xdg.mimeApps = {
     enable = true;
