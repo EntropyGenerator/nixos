@@ -21,6 +21,7 @@
 
     yazi
     atool
+    thefuck
   ];
 
   # Shell
