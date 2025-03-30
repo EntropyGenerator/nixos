@@ -50,6 +50,14 @@
     defaultApplications = {
       "text/plain" = "org.kde.kwrite.desktop";
       "image/x-mng" = "org.kde.gwenview.desktop";
+      "application/pdf" = "firefox-esr.desktop";
+
+      # Browser
+      "text/html" = "firefox-esr.desktop";
+      "x-scheme-handler/http" = "firefox-esr.desktop";
+      "x-scheme-handler/https" = "firefox-esr.desktop";
+      "x-scheme-handler/about" = "firefox-esr.desktop";
+      "x-scheme-handler/unknown" = "firefox-esr.desktop";
     };
   };
  
