@@ -37,7 +37,6 @@
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.ark
-    kdePackages.plasma-systemmonitor
 
     # File Manager
     nautilus
