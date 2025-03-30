@@ -69,8 +69,7 @@
   "temperature": {
     "critical-threshold": 85,
     "format": "{icon} {temperatureC}°C",
-    "format-icons": ["󱃃", "󰔏", "󱃂"],
-    "on-click": "kitty -e s-tui"
+    "format-icons": ["", "", ""]
   },
   "memory": {
     "interval": 5,

@@ -30,6 +30,7 @@ tooltip {
 
 #clock,
 #cpu,
+#temperature,
 #memory,
 #network,
 #pulseaudio,
@@ -102,6 +103,10 @@ tooltip {
 #cpu {
   background-color: #fe968b;
   color: #000000;
+}
+
+#temperature {
+  background-color: #00ffff;
 }
 
 #memory {
