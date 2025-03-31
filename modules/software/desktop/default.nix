@@ -21,7 +21,6 @@
 
   # Desktop Apps
   environment.systemPackages = with pkgs; [
-
     # Environment
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
@@ -37,6 +36,7 @@
     kdePackages.gwenview
     kdePackages.kate
     kdePackages.ark
+    brightnessctl
 
     # File Manager
     nautilus
