@@ -33,6 +33,7 @@
     shellAliases = {
       ll = "ls -la";
       update = "sudo nixos-rebuild switch";
+      rm-hm-bak = "cd ~ && find . -type f -name \"*.hm.bak\" -delete";
     };
     history.size = 1000;
 
@@ -47,11 +48,10 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/plain" = "org.kde.kwrite.desktop";
+      "text/plain" = ["org.kde.kwrite.desktop" "code.desktop"];
       "image/x-mng" = "org.kde.gwenview.desktop";
       "application/pdf" = "firefox-esr.desktop";
 
-      # Browser
       "text/html" = "firefox-esr.desktop";
       "x-scheme-handler/http" = "firefox-esr.desktop";
       "x-scheme-handler/https" = "firefox-esr.desktop";
