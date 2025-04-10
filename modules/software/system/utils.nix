@@ -43,4 +43,7 @@
 
   # polkit
   security.polkit.enable = true;
+
+  # USB devices
+  services.udisks2.enable = true;
 }

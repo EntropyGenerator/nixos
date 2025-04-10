@@ -37,6 +37,7 @@
     kdePackages.kate
     kdePackages.ark
     brightnessctl
+    remmina
 
     # File Manager
     nautilus
