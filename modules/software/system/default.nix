@@ -4,6 +4,7 @@
   imports = [
     ./utils.nix
     ./applications.nix
+    ./user.nix
   ];
 
   # Unfree software

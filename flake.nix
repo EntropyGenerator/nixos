@@ -44,7 +44,7 @@
             home-manager.backupFileExtension = "hm.bak";
 
             home-manager.extraSpecialArgs = inputs // specialArgs;
-            home-manager.users.${username} = import ./user/home-manager/home.nix;
+            home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
         ];
 

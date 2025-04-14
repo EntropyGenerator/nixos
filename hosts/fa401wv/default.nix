@@ -6,9 +6,7 @@
     ../../modules/hardware/fa401wv
 
     ../../modules/software/system
-    ../../modules/software/desktop
-
-    ../../user
+    ../../modules/software/desktop/hyprland.nix
   ];
 
 }
