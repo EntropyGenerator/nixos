@@ -1,14 +1,30 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
   imports = [
-    ./utils.nix
-    ./applications.nix
-    ./user.nix
+
   ];
 
   # Unfree software
-  nixpkgs.config.allowUnfree = true;  
+  nixpkgs.config.allowUnfree = true;
+
+  # User
+  users.users.${username} = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
+  };
+
+  # Security
+  security.pam.services.${username}.enableGnomeKeyring = true;
+
+  # 666
+  services.v2raya.enable = true;
+
+  # Shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
+  environment.shells = with pkgs; [ zsh ];
   
   # flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

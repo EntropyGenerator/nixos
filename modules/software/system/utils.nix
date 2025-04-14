@@ -46,4 +46,7 @@
 
   # USB devices
   services.udisks2.enable = true;
+
+  # 666
+  services.v2raya.enable = true;
 }
