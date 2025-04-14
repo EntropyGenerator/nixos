@@ -28,7 +28,7 @@
     ...
   }: {
     nixosConfigurations = {
-      nix16 = let
+      tx = let
         # USERNAME
         username = "int16";
         specialArgs = {inherit username;};
