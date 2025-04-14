@@ -5,6 +5,7 @@
     ../../modules/hardware/main
 
     ../../modules/software/system
+    ../../modules/software/system/steam.nix
     ../../modules/software/desktop/kde.nix
   ];
 
