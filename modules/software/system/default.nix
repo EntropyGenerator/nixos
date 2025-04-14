@@ -17,9 +17,6 @@
   # Security
   security.pam.services.${username}.enableGnomeKeyring = true;
 
-  # 666
-  services.v2raya.enable = true;
-
   # Shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
