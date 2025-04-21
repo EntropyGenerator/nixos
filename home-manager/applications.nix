@@ -1,7 +1,6 @@
 
 { pkgs, lib, username, ... }:
 {
-
   home.packages = with pkgs; [
     firefox-esr
     chromium
@@ -16,27 +15,6 @@
     wechat-uos
     (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
   ];
-
-  # Shell
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ll = "ls -la";
-      update = "sudo nixos-rebuild switch";
-      rm-hm-bak = "cd ~ && find . -type f -name \"*.hm.bak\" -delete";
-    };
-    history.size = 1000;
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-      theme = "agnoster";
-    };
-  };
 
   # Default Applications
   xdg.mimeApps = {

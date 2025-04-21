@@ -37,12 +37,10 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/fa401wv
-          
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm.bak";
-
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
@@ -59,12 +57,10 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/smw700
-          
           home-manager.nixosModules.home-manager{
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm.bak";
-
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/smw700/home.nix;
           }

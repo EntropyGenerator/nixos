@@ -6,9 +6,7 @@
 
     ../../modules/software/system
     ../../modules/software/system/steam.nix
-    ../../modules/software/desktop/kde.nix
+    ../../modules/software/desktop/lxqt.nix
   ];
-
   networking.hostName = lib.mkForce "smw700";
-
 }

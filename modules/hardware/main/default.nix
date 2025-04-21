@@ -19,4 +19,7 @@
 
   # Power
   services.power-profiles-daemon.enable = true;
+
+  # Firmware
+  hardware.enableRedistributableFirmware = true;
 }

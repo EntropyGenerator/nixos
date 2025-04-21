@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-  ];
-
   # Wayland Desktop Environment Configuations.
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

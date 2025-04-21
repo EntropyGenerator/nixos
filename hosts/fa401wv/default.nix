@@ -11,7 +11,5 @@
     ../../modules/software/system/utils.nix
     ../../modules/software/desktop/hyprland.nix
   ];
-
   networking.hostName = lib.mkForce "tx";
-
 }
