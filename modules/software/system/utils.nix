@@ -23,6 +23,7 @@
     pciutils
     nvtopPackages.full
     powertop
+    remmina
   ];
 
   # nix-ld
