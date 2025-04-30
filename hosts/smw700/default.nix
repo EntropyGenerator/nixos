@@ -13,10 +13,13 @@
 
   environment.systemPackages = with pkgs; [
     maliit-keyboard
+    touchegg
   ];
 
   services.displayManager.autoLogin ={
     enable = true;
     user = "${username}";
   };
+
+  services.touchegg.enable = true;
 }
