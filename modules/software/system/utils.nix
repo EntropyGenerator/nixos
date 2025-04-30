@@ -29,19 +29,6 @@
   # nix-ld
   programs.nix-ld.enable = true;
 
-  # direnv
-  programs.direnv = {
-    enable = true;
-    package = pkgs.direnv;
-    silent = false;
-    loadInNixShell = true;
-    direnvrcExtra = "";
-    nix-direnv = {
-      enable = true;
-      package = pkgs.nix-direnv;
-    };
-  };
-
   # polkit
   security.polkit.enable = true;
 
