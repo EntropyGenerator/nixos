@@ -1,5 +1,11 @@
 { config, lib, pkgs, ... }:
 {
+  # git
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
+
   # direnv
   programs.direnv = {
     enable = true;

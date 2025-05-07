@@ -6,7 +6,6 @@
     vim
     htop
     btop
-    git
     tree
     curl
     wget
