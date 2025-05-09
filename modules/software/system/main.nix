@@ -14,8 +14,11 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
-  # Security
-  security.pam.services.${username}.enableGnomeKeyring = true;
+  # git
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   # Shell
   programs.zsh.enable = true;

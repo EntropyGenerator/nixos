@@ -12,4 +12,7 @@
     ../../modules/software/desktop/hyprland.nix
   ];
   networking.hostName = lib.mkForce "tx";
+
+  # Security
+  security.pam.services.${username}.enableGnomeKeyring = true;
 }
