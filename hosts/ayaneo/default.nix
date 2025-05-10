@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/hardware/main
+    ../../modules/hardware/ayaneo
 
     ../../modules/software/system/main.nix
     ../../modules/software/system/utils.nix
@@ -10,16 +11,8 @@
   ];
   networking.hostName = lib.mkForce "ayaneo";
 
-  # Sound
-  # hardware.firmware = with pkgs; [ sof-firmware ];
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  hardware.pulseaudio.extraConfig = "load-module module-combine-sink";
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
-
   environment.systemPackages = with pkgs; [
     maliit-keyboard
-    touchegg
     mangohud
   ];
 
@@ -35,8 +28,6 @@
 #    '';
 #  };
 
-  services.touchegg.enable = true;
-
   programs = {
     gamescope = {
       enable = true;
@@ -47,9 +38,6 @@
       gamescopeSession.enable = true;
     };
   };
-
-  # hardware.xone.enable = true; # support for the xbox controller USB dongle
-  # boot.initrd.kernelModules = [ "usbhid" "joydev" "xpad" ];
 
   services.handheld-daemon = {
     enable = true;
