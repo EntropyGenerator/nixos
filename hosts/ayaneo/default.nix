@@ -10,6 +10,14 @@
   ];
   networking.hostName = lib.mkForce "ayaneo";
 
+  # Sound
+  # hardware.firmware = with pkgs; [ sof-firmware ];
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  hardware.pulseaudio.extraConfig = "load-module module-combine-sink";
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
   environment.systemPackages = with pkgs; [
     maliit-keyboard
     touchegg

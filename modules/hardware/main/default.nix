@@ -4,7 +4,6 @@
   imports = [
     ./network.nix
     ./input.nix
-    ./sound.nix
     ./bluetooth.nix
   ];
   # Use the systemd-boot EFI boot loader.
