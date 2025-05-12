@@ -25,9 +25,9 @@
 
   # Sound
   hardware.firmware = with pkgs; [ sof-firmware ];
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  hardware.pulseaudio.extraConfig = "load-module module-combine-sink";
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
-
+  services.pulseaudio.enable = true;
+  services.pulseaudio.support32Bit = true;
+  services.pulseaudio.extraConfig = "load-module module-combine-sink";
+  services.pulseaudio.package = pkgs.pulseaudioFull;
+  services.pipewire.enable = false;
 }
