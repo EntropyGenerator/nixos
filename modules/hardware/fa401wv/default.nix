@@ -21,6 +21,7 @@
     kernelModules = [ "amd-pstate" ];
     kernelParams = [
       "pcie_aspm.policy=powersupersave"
+      "cpu0_hotplug"
     ];
   };
   powerManagement.enable = true;
