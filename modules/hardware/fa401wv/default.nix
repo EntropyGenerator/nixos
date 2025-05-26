@@ -7,7 +7,7 @@
       ./nvidia.nix
     ];
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
 
   # AMD CPU
   boot = {
