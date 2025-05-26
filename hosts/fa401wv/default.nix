@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,7 +7,7 @@
 
     ../../modules/software/system/main.nix
     ../../modules/software/system/dev.nix
-    ../../modules/software/system/steam.nix
+    ../../modules/software/system/game.nix
     ../../modules/software/system/utils.nix
     ../../modules/software/desktop/hyprland.nix
   ];
