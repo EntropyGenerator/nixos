@@ -21,4 +21,7 @@
   environment.systemPackages = with pkgs; [
     pavucontrol
   ];
+
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
+
 }
