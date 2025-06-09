@@ -67,6 +67,25 @@
         ];
 
       };
+      x220 = let
+        # USERNAME
+        username = "int16";
+        specialArgs = {inherit username;};
+      in nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/x220
+          home-manager.nixosModules.home-manager{
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm.bak";
+            home-manager.extraSpecialArgs = inputs // specialArgs;
+            home-manager.users.${username} = import ./hosts/x220/home.nix;
+          }
+        ];
+
+      };
     };
   };
 }
