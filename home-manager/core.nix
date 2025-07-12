@@ -17,5 +17,15 @@
             file_manager = "${pkgs.nautilus}/bin/nautilus";
         };
     };
-};
+  };
+
+  # Secure
+  services.gnome-keyring.enable = true;
+  home.packages = [ pkgs.gcr ];
+
+  # Theme
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
 }

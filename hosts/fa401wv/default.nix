@@ -13,9 +13,6 @@
   ];
   networking.hostName = lib.mkForce "tx";
 
-  # Security
-  security.pam.services.${username}.enableGnomeKeyring = true;
-
   # Sound
   services.pipewire = {
     enable = true;

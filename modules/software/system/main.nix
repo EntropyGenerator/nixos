@@ -25,6 +25,9 @@
   users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
   environment.shells = with pkgs; [ zsh ];
+
+  # Secure
+  security.pam.services.login.enableGnomeKeyring = true;
   
   # flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

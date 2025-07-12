@@ -9,7 +9,6 @@
     tree
     curl
     wget
-    linuxKernel.packages.linux_6_13.cpupower
     fastfetch
     s-tui
     unzip

@@ -7,7 +7,4 @@
 
     ../../home-manager/hyprland
   ];
-
-  # Keyring
-  services.gnome-keyring.enable = true;
 }

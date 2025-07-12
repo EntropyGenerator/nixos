@@ -58,7 +58,6 @@
   ];
 
   # Gnome fix
-  programs.dconf.enable = true;
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   # Nautilus fix
