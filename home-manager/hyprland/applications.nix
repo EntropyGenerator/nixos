@@ -34,8 +34,5 @@
         dunst
         hyprshade
         bibata-cursors
-
-        # Greetd
-        greetd.tuigreet
-    ]
+    ];
 }

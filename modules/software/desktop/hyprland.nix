@@ -9,6 +9,17 @@
     # displayManager.gdm.enable = true;
   };
 
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    kitty
+    greetd.tuigreet
+  ];
+
   # Gnome fix
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
