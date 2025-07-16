@@ -9,71 +9,8 @@
     # displayManager.gdm.enable = true;
   };
 
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  # Desktop Apps
-  environment.systemPackages = with pkgs; [
-    # Environment
-    libsForQt5.qt5.qtwayland
-    kdePackages.qtwayland
-    kdePackages.qtsvg
-    xorg.xlsclients
-    xwayland
-    adwaita-icon-theme
-    gnomeExtensions.appindicator
-
-    # Utils
-    networkmanagerapplet
-    kitty
-    kdePackages.gwenview
-    kdePackages.kate
-    kdePackages.ark
-    brightnessctl
-    remmina
-
-    # File Manager
-    nautilus
-    code-nautilus
-    
-    # Hyprland
-    hyprpicker
-    hyprcursor
-    hyprlock
-    hypridle
-    hyprpaper
-    hyprshot
-    waybar
-    wofi
-    wlogout
-    dunst
-    hyprshade
-    bibata-cursors
-
-    # Greetd
-    greetd.tuigreet
-  ];
-
   # Gnome fix
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
-
-  # Nautilus fix
-  services.gvfs.enable = true;
-  nixpkgs.overlays = [
-    (final: prev: {
-      nautilus = prev.nautilus.overrideAttrs (nprev: {
-        buildInputs =
-          nprev.buildInputs
-          ++ (with pkgs.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
-      });
-    })
-  ];
 
   # greetd
   services.greetd = {
