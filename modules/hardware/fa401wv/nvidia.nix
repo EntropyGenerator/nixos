@@ -11,7 +11,7 @@
     ## Enable the Nvidia card, as well as Prime and Offload:
     amdgpu.initrd.enable = true;
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       open = true;
       modesetting.enable = true;
       nvidiaSettings = true;
