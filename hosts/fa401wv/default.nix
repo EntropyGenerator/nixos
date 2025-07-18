@@ -1,7 +1,6 @@
 { config, pkgs, lib, username, ... }:
 {
   imports = [
-    ../../modules/hardware/hardware-configuration.nix
     ../../modules/hardware/main
     ../../modules/hardware/fa401wv
 

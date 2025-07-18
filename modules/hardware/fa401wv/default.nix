@@ -5,6 +5,7 @@
     [
       ./asus.nix
       ./nvidia.nix
+      ./hardware-configuration.nix
     ];
     
   networking.hostName = lib.mkForce "tx";
