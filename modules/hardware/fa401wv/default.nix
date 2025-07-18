@@ -6,6 +6,20 @@
       ./asus.nix
       ./nvidia.nix
     ];
+    
+  networking.hostName = lib.mkForce "tx";
+
+  # Sound
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+  };
+  environment.systemPackages = with pkgs; [
+    pavucontrol
+  ];
+
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_6_15;
 

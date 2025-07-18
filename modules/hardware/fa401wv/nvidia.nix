@@ -36,7 +36,9 @@
 
   # MultiGPU
   environment.variables = {
+    WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     KWIN_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
     AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+    __GLX_VENDOR_LIBRARY_NAME = "mesa";
   };
 }
