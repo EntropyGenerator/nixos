@@ -22,6 +22,6 @@
     pavucontrol
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_15;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
 }
