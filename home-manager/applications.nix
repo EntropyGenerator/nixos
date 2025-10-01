@@ -12,7 +12,7 @@
     libreoffice-qt6-fresh
     go-musicfox
     vlc
-    wechat-uos
+    wechat
     (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
   ];
 
