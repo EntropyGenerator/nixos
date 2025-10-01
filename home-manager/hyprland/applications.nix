@@ -11,15 +11,14 @@
 
         # Utils
         networkmanagerapplet
-        kdePackages.gwenview
-        kdePackages.kate
-        kdePackages.ark
+        loupe
+        gnome-text-editor
+        file-roller
         brightnessctl
         remmina
 
         # File Manager
-        kdePackages.dolphin
-        kdePackages.qtsvg
+        nautilus
         
         # Hyprland
         hyprpicker

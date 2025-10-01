@@ -54,4 +54,7 @@
   #  fish
   #  bash
   #'';
+
+  # Nautilus fix
+  services.gvfs.enable = true;
 }
