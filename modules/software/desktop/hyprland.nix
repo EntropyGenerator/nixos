@@ -57,4 +57,10 @@
 
   # Nautilus fix
   services.gvfs.enable = true;
+
+  # Avoid suspend on power
+  services.logind.extraConfig = ''
+    HandleLidSwitch=suspend
+    HandleLidSwitchExternalPower=ignore
+  '';
 }
