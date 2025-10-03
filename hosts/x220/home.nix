@@ -7,4 +7,8 @@
 
     ../../home-manager/hyprland
   ];
+
+  home.packages = with pkgs; [
+    monero-gui
+  ];
 }
