@@ -5,7 +5,6 @@
     [
       ./asus.nix
       ./nvidia.nix
-      ./hardware-configuration.nix
     ];
     
   networking.hostName = lib.mkForce "tx";
@@ -22,7 +21,7 @@
   ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # AMD CPU
   boot = {
