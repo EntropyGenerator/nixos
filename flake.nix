@@ -51,7 +51,6 @@
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
         ];
-
       };
 
       x220 = let
