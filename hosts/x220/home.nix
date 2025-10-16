@@ -11,5 +11,7 @@
   home.packages = with pkgs; [
     feather
     wine
+    winetricks
+    protontricks
   ];
 }
