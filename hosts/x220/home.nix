@@ -13,5 +13,8 @@
     wine
     winetricks
     protontricks
+
+    telegram-desktop
+    element-desktop
   ];
 }
