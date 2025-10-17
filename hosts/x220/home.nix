@@ -15,6 +15,5 @@
     protontricks
 
     telegram-desktop
-    element-desktop
   ];
 }
