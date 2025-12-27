@@ -43,4 +43,40 @@
 
   # SSD
   services.fstrim.enable = lib.mkDefault true;
+
+  # TMP Config for Moneta GPU fuzzing test
+  specialization = {
+    moneta.configuration = {
+      system.nixos.tags = [ "moneta" ];
+      
+      boot.kernelPackages = let
+        linux_moneta_pkg = { fetchurl, buildLinux, ... } @ args:
+
+          buildLinux (args // rec {
+            version = "6.18.2";
+            modDirVersion = version;
+
+            src = fetchurl {
+              url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.2.tar.xz";
+              # After the first build attempt, look for "hash mismatch" and then 2 lines below at the "got:" line.
+              # Use "sha256-....." value here.
+              hash = "";
+            };
+            kernelPatches = [
+              {
+                name = "moneta";
+                patch = ./moneta.patch;
+              }
+            ];
+
+            extraConfig = ''
+            '';
+
+            extraMeta.branch = "6.18";
+          } // (args.argsOverride or {}));
+        linux_moneta = pkgs.callPackage linux_moneta_pkg{};
+      in 
+        pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_moneta);
+    }
+  }
 }
