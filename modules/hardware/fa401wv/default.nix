@@ -21,7 +21,7 @@
   ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
   # AMD CPU
   boot = {
@@ -45,7 +45,7 @@
   services.fstrim.enable = lib.mkDefault true;
 
   # TMP Config for Moneta GPU fuzzing test
-  specialization = {
+  specialisation = {
     moneta.configuration = {
       system.nixos.tags = [ "moneta" ];
       
@@ -60,12 +60,15 @@
               url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.18.2.tar.xz";
               # After the first build attempt, look for "hash mismatch" and then 2 lines below at the "got:" line.
               # Use "sha256-....." value here.
-              hash = "";
+              hash = "sha256-VYxrurdJSSs0+Zgn/oB7ADmnRGk8IdOn4Ds6SO2quWo=";
             };
             kernelPatches = [
               {
                 name = "moneta";
                 patch = ./moneta.patch;
+                structuredExtraConfig = {
+                  KVM_AGAMOTTO = lib.kernel.yes;
+                };
               }
             ];
 
@@ -77,6 +80,6 @@
         linux_moneta = pkgs.callPackage linux_moneta_pkg{};
       in 
         pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_moneta);
-    }
-  }
+    };
+  };
 }
