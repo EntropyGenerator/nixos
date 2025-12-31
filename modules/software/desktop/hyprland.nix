@@ -17,7 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     kitty
-    greetd.tuigreet
+    tuigreet
   ];
 
   # Gnome fix

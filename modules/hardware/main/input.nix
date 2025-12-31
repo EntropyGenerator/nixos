@@ -21,16 +21,14 @@
     # fcitx5.plasma6Support = true;
     fcitx5.addons = with pkgs; [
       kdePackages.fcitx5-qt
-      fcitx5-chinese-addons
+      kdePackages.fcitx5-chinese-addons
     ];
   };
   fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
     noto-fonts-color-emoji
-    noto-fonts-extra
     font-awesome
     corefonts
     # nerdfonts
