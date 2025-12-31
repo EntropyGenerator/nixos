@@ -44,6 +44,11 @@
   # SSD
   services.fstrim.enable = lib.mkDefault true;
 
+  # ACPI S3 Fix for FA401WV BIOS Version 319
+  boot.initrd.prepend = [
+    "${(pkgs.callPackage ./custom-dsdt.nix {})}/dsdt.cpio"
+  ];
+
   # TMP Config for Moneta GPU fuzzing test
   # specialisation = {
   #   moneta.configuration = {
