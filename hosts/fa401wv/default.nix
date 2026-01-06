@@ -9,7 +9,7 @@
     # ../../modules/software/system/dev.nix
     ../../modules/software/system/game.nix
     ../../modules/software/system/utils.nix
-    # ../../modules/software/system/waydroid.nix
+    ../../modules/software/system/waydroid.nix
     ../../modules/software/desktop/hyprland.nix
   ];
 
