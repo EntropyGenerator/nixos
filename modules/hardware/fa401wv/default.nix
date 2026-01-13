@@ -32,8 +32,8 @@
       #config.boot.kernelPackages.zenpower 
       #config.boot.kernelPackages.acpi_call
     ];
-    kernelModules = [ "amd-pstate" ];
-    kernelParams = [
+    # kernelModules = [ "amd-pstate" ];
+    kernelParams = lib.mkDefault [
       "pcie_aspm.policy=powersupersave"
     ];
   };
@@ -85,7 +85,21 @@
           } // (args.argsOverride or {}));
         linux_moneta = pkgs.callPackage linux_moneta_pkg{};
       in 
-        pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_moneta);
+        pkgs.lib.recurseIntoAttrs (pkgs.linuxPackagesFor linux_moneta);
+
+      boot.initrd.kernelModules = [ 
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
+
+        "amdgpu" # replace or remove with your device's driver as needed
+      ];
+      boot.kernelParams = [
+        "amd_iommu=on"
+        "iommu=pt"
+        "vfio-pci.ids=10de:28e0,10de:22be"
+      ];
+      boot.blacklistedKernelModules = lib.mkForce [ "nouveau" ];
     };
   };
 }
