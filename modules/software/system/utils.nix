@@ -24,9 +24,6 @@
     remmina
   ];
 
-  # nix-ld
-  programs.nix-ld.enable = true;
-
   # polkit
   security.polkit.enable = true;
 

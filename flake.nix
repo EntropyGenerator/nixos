@@ -24,6 +24,7 @@
     nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = inputs @ { 
@@ -31,16 +32,17 @@
     nixpkgs,
     nixpkgs-latest,
     home-manager,
+    nix-alien,
     ...
   }: {
     nixosConfigurations = {
       tx = let
         # USERNAME
         username = "int16";
-        specialArgs = {inherit username;};
+        system = "x86_64-linux";
+        specialArgs = {inherit self username system;};
       in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules = [
           ./hosts/fa401wv
           home-manager.nixosModules.home-manager{
@@ -50,6 +52,13 @@
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
+          ({ self, system, ... }: {
+            environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
+              nix-alien
+            ];
+            # Optional, needed for `nix-alien-ld`
+            programs.nix-ld.enable = true;
+          })
         ];
       };
 
