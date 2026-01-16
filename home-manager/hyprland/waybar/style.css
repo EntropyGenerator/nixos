@@ -33,7 +33,7 @@ tooltip {
 #temperature,
 #memory,
 #network,
-#pulseaudio,
+#pipewire,
 #backlight,
 #tray,
 #mode,
@@ -115,7 +115,7 @@ tooltip {
   color: #000000;
 }
 
-#pulseaudio {
+#pipewire {
   background-color: #b0f5e5;
   color: #000000;
 }

@@ -15,8 +15,6 @@
     zip
     unar
     ntfs3g
-    wqy_microhei
-    wqy_zenhei
     toybox # Linux Utils
     pciutils
     nvtopPackages.full

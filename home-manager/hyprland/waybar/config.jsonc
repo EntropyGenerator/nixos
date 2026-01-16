@@ -11,7 +11,7 @@
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "tray",
-    "pulseaudio",
+    "pipewire",
     "backlight",
     "network",
     "clock",
@@ -87,7 +87,7 @@
     "tooltip-format": "{ifname} {ipaddr}/{cidr} via {gwaddr}",
     "format-alt": "\uf6ff {ipaddr}/{cidr}"
   },
-  "pulseaudio": {
+  "pipewire": {
     "scroll-step": 5,
     "format": "{icon} {volume:2}%",
     "format-muted": "\uf6a9",

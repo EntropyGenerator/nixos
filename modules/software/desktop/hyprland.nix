@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Dolphin fix
+  nixpkgs.overlays = [
+    (import ./dolphin-fix.nix)
+  ];
+
   # Wayland Desktop Environment Configuations.
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -21,7 +26,7 @@
   ];
 
   # Gnome fix
-  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
+  # services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   # greetd
   services.greetd = {

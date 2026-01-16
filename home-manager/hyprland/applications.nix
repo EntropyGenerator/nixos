@@ -18,7 +18,12 @@
         remmina
 
         # File Manager
-        nautilus
+        # nautilus
+        kdePackages.dolphin
+        kdePackages.kio # needed since 25.11
+        kdePackages.kio-fuse #to mount remote filesystems via FUSE
+        kdePackages.kio-extras
+        kdePackages.qtsvg
         
         # Hyprland
         hyprpicker
