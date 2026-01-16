@@ -7,7 +7,6 @@
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
-
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -24,7 +23,6 @@
     nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = inputs @ { 
@@ -32,7 +30,6 @@
     nixpkgs,
     nixpkgs-latest,
     home-manager,
-    nix-alien,
     ...
   }: {
     nixosConfigurations = {
@@ -52,13 +49,6 @@
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
-          ({ self, system, ... }: {
-            environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
-              nix-alien
-            ];
-            # Optional, needed for `nix-alien-ld`
-            programs.nix-ld.enable = true;
-          })
         ];
       };
 
