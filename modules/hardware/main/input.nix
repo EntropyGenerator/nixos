@@ -30,8 +30,8 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
     font-awesome
-    wqy_microhei
-    wqy_zenhei
+    # wqy_microhei
+    # wqy_zenhei
     corefonts
     # nerdfonts
   ];
