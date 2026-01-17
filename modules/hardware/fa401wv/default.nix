@@ -22,7 +22,7 @@
   ];
 
   # Kernel
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
   # AMD CPU
   boot = {

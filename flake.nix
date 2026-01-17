@@ -8,13 +8,12 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
+      "https://chaotic-nyx.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "mirror.nju.edu.cn-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "mirrors.ustc.edu.cn-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       # nix community's cache server public key
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 
@@ -23,6 +22,7 @@
     nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
   };
 
   outputs = inputs @ { 
@@ -30,6 +30,7 @@
     nixpkgs,
     nixpkgs-latest,
     home-manager,
+    chaotic,
     ...
   }: {
     nixosConfigurations = {
@@ -49,6 +50,7 @@
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
+          chaotic.nixosModules.default # for cachyos kernel
         ];
       };
 
