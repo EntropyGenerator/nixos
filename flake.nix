@@ -23,6 +23,7 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = inputs @ { 
@@ -31,6 +32,7 @@
     nixpkgs-latest,
     home-manager,
     chaotic,
+    nix-alien,
     ...
   }: {
     nixosConfigurations = {
@@ -38,7 +40,8 @@
         # USERNAME
         username = "int16";
         system = "x86_64-linux";
-        specialArgs = {inherit self username system;};
+        alien-pkgs = inputs.nix-alien.packages.${system};
+        specialArgs = {inherit self username system alien-pkgs;};
       in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [

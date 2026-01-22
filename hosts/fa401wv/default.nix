@@ -1,4 +1,4 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, username, alien-pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -31,5 +31,13 @@
     enable = true;
     dockerCompat = true;
   };
-  environment.systemPackages = [ pkgs.distrobox ];
+
+  # nix-ld
+  programs.nix-ld.enable = true;
+
+  # special environments
+  environment.systemPackages = [
+      alien-pkgs.nix-alien
+      pkgs.distrobox
+  ];
 }
