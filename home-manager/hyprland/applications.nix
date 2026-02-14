@@ -30,7 +30,6 @@
         hypridle
         hyprpaper
         hyprshot
-        waybar
         wofi
         wlogout
         dunst

@@ -9,10 +9,10 @@
   # Wayland Desktop Environment Configuations.
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  services.xserver = {
-    enable = true;
-    # displayManager.gdm.enable = true;
-  };
+  # services.xserver = {
+  #   enable = true;
+  #   # displayManager.gdm.enable = true;
+  # };
 
   # Hyprland
   programs.hyprland = {
@@ -61,7 +61,7 @@
   #'';
 
   # Nautilus fix
-  services.gvfs.enable = true;
+  # services.gvfs.enable = true;
 
   # Avoid suspend on power
   # services.logind.extraConfig = ''
