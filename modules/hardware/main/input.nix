@@ -33,7 +33,7 @@
     # wqy_microhei
     # wqy_zenhei
     corefonts
-    # nerdfonts
+    nerdfonts
   ];
   console = {
     font = "Lat2-Terminus16";
