@@ -29,11 +29,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
-    font-awesome
-    # wqy_microhei
-    # wqy_zenhei
-    corefonts
-    nerd-fonts-jetbrains-mono
+    nerd-fonts.jetbrains-mono
   ];
   console = {
     font = "Lat2-Terminus16";
