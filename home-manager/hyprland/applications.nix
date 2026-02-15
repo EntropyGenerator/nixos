@@ -1,13 +1,6 @@
 { pkgs, config, ... }:
 {
     home.packages = with pkgs; [
-        # Environment
-        libsForQt5.qt5.qtwayland
-        kdePackages.qtwayland
-        xorg.xlsclients
-        xwayland
-        kdePackages.qtsvg
-
         # Utils
         networkmanagerapplet
         brightnessctl
@@ -22,19 +15,5 @@
         kdePackages.kio-fuse # to mount remote filesystems via FUSE
         kdePackages.kio-extras
         # nautilus
-        
-        # Hyprland
-        hyprpicker
-        hyprcursor
-        hyprlock
-        hypridle
-        hyprpaper
-        hyprshot
-        hyprlauncher
-        wofi
-        wlogout
-        dunst
-        hyprshade
-        bibata-cursors
     ];
 }
