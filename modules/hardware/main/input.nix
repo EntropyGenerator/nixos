@@ -28,8 +28,8 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    nerd-fonts.jetbrains-mono
+    font-awesome_6
+    nerd-fonts.fira-code
   ];
   console = {
     font = "Lat2-Terminus16";
