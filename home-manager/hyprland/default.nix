@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
+    ./dunst
     ./hypr
     ./kitty
     ./waybar
