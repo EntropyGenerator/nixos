@@ -11,9 +11,9 @@
 /* } */
 #window #outer-box #input {
   /* The name of the search bar */
-  background-color: rgba(24, 24, 24, 0.9);
+  background-color: rgba(24, 24, 24, 1);
   color: white;
-  border:rgba(0, 0, 0, 0.8) solid 2px;
+  border:rgba(0, 0, 0, 1) solid 2px;
   padding: 0.8rem 1rem;
   margin-bottom: 1rem;
   font-size: 1.2rem;
@@ -25,9 +25,9 @@
 }
 #window #outer-box #scroll {
   /* The name of the scrolled window containing all of the entries */
-  border:rgba(0, 0, 0, 0.8) solid 2px;
+  border:rgba(0, 0, 0, 1) solid 2px;
   border-radius: 1rem;
-  background-color: rgba(24, 24, 24, 0.9);
+  background-color: rgba(24, 24, 24, 0.95);
   padding: 0.5rem;
 }
 #window #outer-box #scroll #inner-box {
