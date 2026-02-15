@@ -19,8 +19,8 @@
     hypridle
     hyprpaper
     hyprshot
-    hyprlauncher
-    wofi # todo: replace with hyprlauncher
+    hyprtoolkit
+    wofi
     wlogout
     dunst
     hyprshade
