@@ -19,7 +19,6 @@
     pciutils
     nvtopPackages.full
     powertop
-    remmina
   ];
 
   # polkit

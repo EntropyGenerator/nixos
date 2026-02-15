@@ -4,6 +4,7 @@
   ...
 }: {
   # xdg.configFile."hypr/hyprland.conf".enable = false;
+  services.hyprpolkitagent.enable = true;
 
   home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
   home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;

@@ -30,6 +30,7 @@
         hypridle
         hyprpaper
         hyprshot
+        hyprlauncher
         wofi
         wlogout
         dunst
