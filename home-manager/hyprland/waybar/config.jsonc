@@ -8,19 +8,21 @@
   "margin-bottom": 0,
   "height": 24,
   "modules-left": [
-    "hyprland/window",
+    "clock",
     "cpu",
     "temperature",
     "memory",
-    "disk"
+    "disk",
+    "hyprland/window"
   ],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
   "modules-right": [
     "tray",
     "pulseaudio",
     "backlight",
     "network",
-    "clock",
     "battery"
   ],
   /* Center Module */

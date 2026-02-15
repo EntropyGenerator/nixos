@@ -3,15 +3,14 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://mirror.nju.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.nju.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://chaotic-nyx.cachix.org"
     ];
     extra-trusted-public-keys = [
-      # nix community's cache server public key
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
