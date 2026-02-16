@@ -41,6 +41,7 @@
   };
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
+  services.auto-epp.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # SSD
@@ -51,6 +52,7 @@
   # boot.initrd.prepend = [
   #   "${(pkgs.callPackage ./custom-dsdt.nix {})}/dsdt.cpio"
   # ];
+
 
   # TMP Config for Moneta GPU fuzzing test
   specialisation = {
