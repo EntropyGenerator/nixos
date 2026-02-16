@@ -2,3 +2,5 @@ show=drun
 prompt=Search for Applications
 hide_scroll=true
 insensitive=true
+allow_images=true
+width=35%

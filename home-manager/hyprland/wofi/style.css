@@ -17,7 +17,7 @@
   padding: 0.8rem 1rem;
   margin-bottom: 1rem;
   font-size: 1.2rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 #window #outer-box #input:focus, #window #outer-box #input:focus-visible, #window #outer-box #input:active {
   border:#00ddff solid 2px;
@@ -26,7 +26,7 @@
 #window #outer-box #scroll {
   /* The name of the scrolled window containing all of the entries */
   border:rgba(0, 0, 0, 1) solid 2px;
-  border-radius: 1rem;
+  border-radius: 4px;
   background-color: rgba(24, 24, 24, 0.95);
   padding: 0.5rem;
 }
@@ -35,7 +35,7 @@
   /* The name of all entries */
   /* The name of all boxes shown when expanding  */
   /* entries with multiple actions */
-  border-radius: 1rem;
+  border-radius: 4px;
   /* background-color: rgba(24, 24, 24, 0.9); */
 }
 #window #outer-box #scroll #inner-box #img {
@@ -51,19 +51,19 @@
   /* The name of all entries */
   /* background-color: rgba(24, 24, 24, 0.1); */
   padding: 0.6rem 1rem;
-  border-radius: 1rem;
+  border-radius: 4px;
 }
 #window #outer-box #scroll #inner-box #entry:hover {
   /* The name of all entries currently selected */
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+  border-radius: 4px;
   outline: none;
   /* border: rgba(255, 255, 255, 0.8) 2px solid; */
 }
 #window #outer-box #scroll #inner-box #entry:selected {
   /* The name of all entries currently selected */
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
+  border-radius: 4px;
   outline: none;
   /* border: rgba(255, 255, 255, 0.8) 2px solid; */
 }
@@ -71,5 +71,5 @@
 #window #outer-box #scroll #inner-box #expander-box {
   /* The name of all boxes shown when expanding entries with multiple actions */
   background-color: rgba(0, 0, 0, 0);
-  border-radius: 1rem;
+  border-radius: 4px;
 }
