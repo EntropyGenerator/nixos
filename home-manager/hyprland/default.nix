@@ -6,7 +6,6 @@
     ./kitty
     ./waybar
     ./wlogout
-    ./wleave
     ./wofi
 
     ./applications.nix

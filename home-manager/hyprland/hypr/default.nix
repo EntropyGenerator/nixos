@@ -21,8 +21,7 @@
     hyprshot
     hyprtoolkit
     wofi
-    wlogout # TODO: replace by wleave
-    wleave
+    wlogout
     dunst
     hyprshade
     bibata-cursors
