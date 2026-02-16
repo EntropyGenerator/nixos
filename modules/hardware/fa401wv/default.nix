@@ -28,27 +28,47 @@
   # AMD CPU
   boot = {
     blacklistedKernelModules = [ "nouveau" ];
-    extraModulePackages = [
-      #config.boot.kernelPackages.asus-ec-sensors
-      #config.boot.kernelPackages.asus-wmi-sensors
-      #config.boot.kernelPackages.zenpower 
-      #config.boot.kernelPackages.acpi_call
-    ];
+    # extraModulePackages = [
+    #   config.boot.kernelPackages.asus-ec-sensors
+    #   config.boot.kernelPackages.asus-wmi-sensors
+    #   config.boot.kernelPackages.zenpower 
+    #   config.boot.kernelPackages.acpi_call
+    # ];
     # kernelModules = [ "amd-pstate" ];
     kernelParams = lib.mkDefault [
       "pcie_aspm.policy=powersupersave"
     ];
   };
   powerManagement.enable = true;
-  powerManagement.powertop.enable = true;
-  services.auto-epp.enable = true;
+  # powerManagement.powertop.enable = true;
+  # services.auto-epp.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      energy_performance_preference = "power";
+      platform_profile = "low-power";
+      scaling_max_freq = "3800000"; # Max freq 3.8GHz
+      turbo = "auto";
+      # Battery charging
+      enable_thresholds = "true"; 
+      start_threshold = "50";
+      stop_threshold = "60";
+    };
+    charger = {
+      governor = "powersave";
+      energy_performance_preference = "balance_performance";
+      platform_profile = "balanced";
+      turbo = "auto";
+    };
+  };
 
   # SSD
   services.fstrim.enable = lib.mkDefault true;
 
   # ACPI S3 Fix for FA401WV BIOS Version 319
-  # Not Success Yet...
+  # Not Succeeded Yet...
   # boot.initrd.prepend = [
   #   "${(pkgs.callPackage ./custom-dsdt.nix {})}/dsdt.cpio"
   # ];
