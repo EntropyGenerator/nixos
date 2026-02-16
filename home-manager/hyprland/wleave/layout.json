@@ -1,0 +1,46 @@
+{
+    "buttons": [
+        {
+            "label": "logout",
+            "action": [
+                {
+                    "$DESKTOP_SESSION": "niri",
+                    "shell": "niri msg action quit --skip-confirmation"
+                },
+                {
+                    "$DESKTOP_SESSION": "sway",
+                    "shell": "swaymsg exit"
+                },
+                {
+                    "$DESKTOP_SESSION": "plasma",
+                    "shell": "qdbus org.kde.KWin /Session org.kde.KWin.Session.quit"
+                },
+                {
+                    "$DESKTOP_SESSION": "gnome",
+                    "shell": "gnome-session-quit --no-prompt"
+                },
+                "loginctl terminate-user $USER"
+            ],
+            "text": "Logout",
+            "keybind": "l"
+        },
+        {
+            "label": "shutdown",
+            "action": "systemctl poweroff",
+            "text": "Shutdown",
+            "keybind": "s"
+        },
+        {
+            "label": "suspend",
+            "action": "systemctl suspend",
+            "text": "Suspend",
+            "keybind": "e"
+        },
+        {
+            "label": "reboot",
+            "action": "systemctl reboot",
+            "text": "Reboot",
+            "keybind": "r"
+        }
+    ]
+}
