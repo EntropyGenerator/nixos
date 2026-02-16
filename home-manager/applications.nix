@@ -10,7 +10,6 @@
     v2ray
     v2raya
     libreoffice-qt6-fresh
-    go-musicfox
     vlc
     # wechat
     (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
