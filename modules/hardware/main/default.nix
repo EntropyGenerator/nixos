@@ -16,9 +16,6 @@
   # NTFS
   boot.supportedFilesystems = [ "ntfs" ];
 
-  # Power
-  services.power-profiles-daemon.enable = true;
-
   # Firmware
   hardware.enableRedistributableFirmware = true;
 }
