@@ -16,7 +16,12 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [
+        "git"
+        "direnv"
+        "vscode"
+        "sudo"
+      ];
       theme = "agnoster";
     };
   };
