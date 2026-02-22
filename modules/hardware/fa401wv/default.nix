@@ -73,6 +73,8 @@
   #   "${(pkgs.callPackage ./custom-dsdt.nix {})}/dsdt.cpio"
   # ];
 
+  # IIO Sensors
+  hardware.sensor.iio.enable = lib.mkDefault true;
 
   # TMP Config for Moneta GPU fuzzing test
   specialisation = {
