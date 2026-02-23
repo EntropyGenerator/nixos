@@ -11,6 +11,7 @@
       ll = "ls -la";
       update = "sudo nixos-rebuild switch";
       rm-hm-bak = "cd ~ && find . -type f -name \"*.hm.bak\" -delete";
+      igpu = ''DRI_PRIME=1002:150e! "$@"'';
     };
     history.size = 1000;
 
