@@ -12,6 +12,7 @@
     amdgpu.initrd.enable = true;
     nvidia = {
       # package = config.boot.kernelPackages.nvidiaPackages.beta;
+      # package below is from https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "590.48.01";
         sha256_64bit = "sha256-ueL4BpN4FDHMh/TNKRCeEz3Oy1ClDWto1LO/LWlr1ok=";
