@@ -8,11 +8,11 @@
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
-      "https://chaotic-nyx.cachix.org"
+      # "https://chaotic-nyx.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 
@@ -21,8 +21,9 @@
     nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release"; # for cachyos kernel
   };
 
   outputs = inputs @ { 
@@ -30,8 +31,9 @@
     nixpkgs,
     nixpkgs-latest,
     home-manager,
-    chaotic,
+    # chaotic,
     nix-alien,
+    nix-cachyos-kernel,
     ...
   }: {
     nixosConfigurations = {
@@ -52,7 +54,13 @@
             home-manager.extraSpecialArgs = inputs // specialArgs;
             home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
           }
-          chaotic.nixosModules.default # for cachyos kernel
+          # chaotic.nixosModules.default # for cachyos kernel
+          ( # for cachyos kernel
+            { pkgs, lib, ... }: {
+              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+            }
+          )
         ];
       };
 

@@ -23,18 +23,11 @@
   ];
 
   # Kernel
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+  # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
 
   # AMD CPU
   boot = {
     blacklistedKernelModules = [ "nouveau" ];
-    # extraModulePackages = [
-    #   config.boot.kernelPackages.asus-ec-sensors
-    #   config.boot.kernelPackages.asus-wmi-sensors
-    #   config.boot.kernelPackages.zenpower 
-    #   config.boot.kernelPackages.acpi_call
-    # ];
-    # kernelModules = [ "amd-pstate" ];
     kernelParams = lib.mkDefault [
       "pcie_aspm.policy=powersupersave"
     ];
