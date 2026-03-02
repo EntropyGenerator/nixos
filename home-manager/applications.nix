@@ -1,10 +1,9 @@
-
 { pkgs, lib, username, ... }:
 {
   home.packages = with pkgs; [
     firefox-esr
     chromium
-    (vscode.override { commandLineArgs = "--enable-wayland-ime %F"; })
+    # (vscode.override { commandLineArgs = "--enable-wayland-ime %F"; })
     seafile-client
     qq
     v2ray
