@@ -18,10 +18,12 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      # https://wiki.nixos.org/wiki/Default_applications
+
       "inode/directory" = "org.kde.dolphin.desktop";
       "x-scheme-handler/file" = "org.kde.dolphin.desktop";
 
-      "text/plain" = ["org.kde.kwrite.desktop" "code.desktop"];
+      "text/plain" = ["org.kde.kate.desktop" "code.desktop"];
       "image/x-mng" = "org.kde.gwenview.desktop";
       "application/pdf" = "firefox-esr.desktop";
 

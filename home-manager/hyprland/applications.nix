@@ -8,6 +8,7 @@
         kdePackages.gwenview # Image Viewer
         kdePackages.ark # Archive Manager
         kdePackages.dragon # Media Player
+        kdePackages.kate # Text Editor
 
         # File Manager
         kdePackages.dolphin
