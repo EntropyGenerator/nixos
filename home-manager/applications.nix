@@ -22,6 +22,7 @@
 
       "inode/directory" = "org.kde.dolphin.desktop";
       "x-scheme-handler/file" = "org.kde.dolphin.desktop";
+      "application/zip" = "org.kde.ark.desktop";
 
       "text/plain" = ["org.kde.kate.desktop" "code.desktop"];
       "image/x-mng" = "org.kde.gwenview.desktop";
