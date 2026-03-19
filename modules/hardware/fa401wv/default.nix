@@ -29,7 +29,8 @@
   boot = {
     blacklistedKernelModules = [ "nouveau" ];
     kernelParams = lib.mkDefault [
-      "pcie_aspm.policy=powersupersave"
+      ''pcie_aspm.policy=powersupersave''
+      ''acpi_osi="Windows 2022"''
     ];
   };
   powerManagement.enable = true;
@@ -71,7 +72,7 @@
 
   # TMP Config for Moneta GPU fuzzing test
   specialisation = {
-    moneta.configuration = {
+    nvidia-vfio.configuration = {
       system.nixos.tags = [ "nvidia-vfio" ];
       
       # boot.kernelPackages = let
