@@ -8,7 +8,7 @@
     # Environment
     libsForQt5.qt5.qtwayland
     kdePackages.qtwayland
-    xorg.xlsclients
+    xlsclients
     xwayland
     kdePackages.qtsvg
 

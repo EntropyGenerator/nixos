@@ -11,7 +11,7 @@
     libreoffice-qt6-fresh
     vlc
     # wechat
-    (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
+    # (pkgs.callPackage ../modules/software/3rd/easierconnect/easierconnect.nix { })
   ];
 
   # Default Applications

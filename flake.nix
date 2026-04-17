@@ -9,19 +9,20 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       # "https://chaotic-nyx.cachix.org"
-      "https://attic.xuyh0120.win/lantian" # cachyos kernel, from https://github.com/xddxdd/nix-cachyos-kernel
+      # "https://attic.xuyh0120.win/lantian" # cachyos kernel, from https://github.com/xddxdd/nix-cachyos-kernel
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" # cachyos kernel
+      # "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" # cachyos kernel
     ];
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-latest.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
     nix-alien.url = "github:thiagokokada/nix-alien";
@@ -31,7 +32,7 @@
   outputs = inputs @ { 
     self,
     nixpkgs,
-    nixpkgs-latest,
+    # nixpkgs-stable,
     home-manager,
     # chaotic,
     nix-alien,
@@ -44,6 +45,7 @@
         username = "int16";
         system = "x86_64-linux";
         alien-pkgs = inputs.nix-alien.packages.${system};
+        # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
         specialArgs = {inherit self username system alien-pkgs;};
       in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
@@ -60,7 +62,7 @@
           ( # for cachyos kernel
             { pkgs, lib, ... }: {
               nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto;
+              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
             }
           )
         ];
