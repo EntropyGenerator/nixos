@@ -24,12 +24,13 @@
     # home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # hyprland.url = "github:hyprwm/Hyprland";
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # for cachyos kernel
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release"; # for cachyos kernel
   };
 
-  outputs = inputs @ { 
+  outputs = { 
     self,
     nixpkgs,
     # nixpkgs-stable,
@@ -38,7 +39,7 @@
     nix-alien,
     nix-cachyos-kernel,
     ...
-  }: {
+  }@inputs: {
     nixosConfigurations = {
       tx = let
         # USERNAME
@@ -46,7 +47,7 @@
         system = "x86_64-linux";
         alien-pkgs = inputs.nix-alien.packages.${system};
         # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-        specialArgs = {inherit self username system alien-pkgs;};
+        specialArgs = {inherit self username system alien-pkgs inputs;};
       in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
