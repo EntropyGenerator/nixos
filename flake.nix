@@ -63,7 +63,7 @@
           ( # for cachyos kernel
             { pkgs, lib, ... }: {
               nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
+              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
             }
           )
         ];
