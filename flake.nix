@@ -88,6 +88,17 @@
         ];
 
       };
+
+      msr1 = let
+        username = "int16";
+        specialArgs = {inherit username;};
+      in nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./hosts/msr1
+
+        ];
+      };
     };
   };
 }
