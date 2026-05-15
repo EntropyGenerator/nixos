@@ -9,19 +9,6 @@
     
   networking.hostName = lib.mkForce "tx";
 
-  # Sound
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-  };
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-  ];
-
   # Kernel
   # boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
 

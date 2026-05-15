@@ -30,7 +30,7 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release"; # for cachyos kernel
   };
 
-  outputs = { 
+  outputs = {
     self,
     nixpkgs,
     # nixpkgs-stable,
@@ -39,65 +39,65 @@
     nix-alien,
     nix-cachyos-kernel,
     ...
-  }@inputs: {
+  }@inputs:
+  let
+    username = "int16";
+
+    mkHost = {
+      system,
+      hostModule,
+      homeModule ? null,
+      extraSpecialArgs ? {},
+      extraModules ? [],
+    }:
+    let
+      specialArgs = { inherit self username system inputs; } // extraSpecialArgs;
+    in
+    nixpkgs.lib.nixosSystem {
+      inherit system specialArgs;
+      modules = [
+        hostModule
+      ]
+      ++ (if homeModule != null then [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm.bak";
+          home-manager.extraSpecialArgs = inputs // specialArgs;
+          home-manager.users.${username} = import homeModule;
+        }
+      ] else [])
+      ++ extraModules;
+    };
+  in {
     nixosConfigurations = {
-      tx = let
-        # USERNAME
-        username = "int16";
+      tx = mkHost {
         system = "x86_64-linux";
-        alien-pkgs = inputs.nix-alien.packages.${system};
-        # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
-        specialArgs = {inherit self username system alien-pkgs inputs;};
-      in nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./hosts/fa401wv
-          home-manager.nixosModules.home-manager{
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm.bak";
-            home-manager.extraSpecialArgs = inputs // specialArgs;
-            home-manager.users.${username} = import ./hosts/fa401wv/home.nix;
-          }
+        hostModule = ./hosts/fa401wv;
+        homeModule = ./hosts/fa401wv/home.nix;
+        extraSpecialArgs = {
+          alien-pkgs = nix-alien.packages.x86_64-linux;
+          # pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
+        };
+        extraModules = [
           # chaotic.nixosModules.default # for cachyos kernel
-          ( # for cachyos kernel
-            { pkgs, lib, ... }: {
-              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-              boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
-            }
-          )
+          ({ pkgs, lib, ... }: {
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+            boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
+          })
         ];
       };
 
-      x220 = let
-        # USERNAME
-        username = "int16";
-        specialArgs = {inherit username;};
-      in nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
+      x220 = mkHost {
         system = "x86_64-linux";
-        modules = [
-          ./hosts/x220
-          home-manager.nixosModules.home-manager{
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm.bak";
-            home-manager.extraSpecialArgs = inputs // specialArgs;
-            home-manager.users.${username} = import ./hosts/x220/home.nix;
-          }
-        ];
-
+        hostModule = ./hosts/x220;
+        homeModule = ./hosts/x220/home.nix;
       };
 
-      msr1 = let
-        username = "int16";
-        specialArgs = {inherit username;};
-      in nixpkgs.lib.nixosSystem {
+      msr1 = mkHost {
         system = "aarch64-linux";
-        modules = [
-          ./hosts/msr1
-
-        ];
+        hostModule = ./hosts/msr1;
       };
     };
   };
