@@ -33,9 +33,9 @@
   # services.hyprlauncher.enable = true;
   services.clipman.enable = true;
 
-  home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
-  home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
-  home.file.".config/hypr/hyprpaper.conf".source = ./hyprpaper.conf;
-  home.file.".config/hypr/hypridle.conf".source = ./hypridle.conf;
-  home.file.".config/hypr/wallpaper/wallpaper.jpg".source = ./wallpaper/wallpaper.jpg;
+  xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
+  xdg.configFile."hypr/hyprlock.conf".source = ./hyprlock.conf;
+  xdg.configFile."hypr/hyprpaper.conf".source = ./hyprpaper.conf;
+  xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
+  xdg.configFile."hypr/wallpaper/wallpaper.jpg".source = ./wallpaper/wallpaper.jpg;
 }

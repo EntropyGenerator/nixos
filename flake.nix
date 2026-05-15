@@ -54,7 +54,7 @@
       specialArgs = { inherit self username system inputs; } // extraSpecialArgs;
     in
     nixpkgs.lib.nixosSystem {
-      inherit system specialArgs;
+      inherit specialArgs;
       modules = [
         hostModule
       ]
@@ -82,9 +82,9 @@
         };
         extraModules = [
           # chaotic.nixosModules.default # for cachyos kernel
-          ({ pkgs, lib, ... }: {
+          ({ pkgs, ... }: {
             nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-            boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-zen4;
           })
         ];
       };

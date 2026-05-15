@@ -12,10 +12,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel
-  boot.kernelPackages = lib.mkOptionDefault pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
   # NTFS
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems.ntfs = true;
 
   # Firmware
   hardware.enableRedistributableFirmware = true;

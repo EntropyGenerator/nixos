@@ -3,5 +3,5 @@
     config,
     ...
 }: {
-    home.file.".config/dunst/dunstrc".source = ./dunstrc;
+    xdg.configFile."dunst/dunstrc".source = ./dunstrc;
 }
